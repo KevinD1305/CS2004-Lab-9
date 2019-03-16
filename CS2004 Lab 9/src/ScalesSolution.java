@@ -38,7 +38,7 @@ public class ScalesSolution
 	        s = s + String.valueOf(CS2004.UI(0,1));
 		}	
 		
-		System.out.println(s + " This is the random string generated!");
+		//System.out.println(s + " This is the random string generated!");
 
 		return s;
 	}
@@ -55,9 +55,7 @@ public class ScalesSolution
 	//Check each element of scasol for a 0 (lhs) and 1 (rhs) add the weight wi
 	//to variables lhs and rhs as appropriate
 	{		
-
 		if (scasol.length() > weights.size()) return(-1);
-		
 		double lhs = 0.0,rhs = 0.0;
 		int n = scasol.length();
 		for(int i=0;i<n;++i)
@@ -85,14 +83,45 @@ public class ScalesSolution
 		print();
 		System.out.println();
 	}
-	public void SmallChange(int n)
+	public void SmallChange()
 	{
-
-		Random p = new Random();
-		int answer = p.nextInt(10 + (n-1) + 1) + 1;
-		ArrayList<String> ar = new ArrayList<String>();
-		ar.add(scasol);
+	
+		Random p = new Random();//Produces Random number
+		int n = scasol.length();//Makes N length of the string
+		int change = p.nextInt((n-1) + 0 + 1) + 0;//Sets minimum and max number P can be.
+		String x = "";
 		
+		//From position 0 to the position we are going to change.
+		for (int k = 0;k < change; k++)
+		{
+			char scasolPosition = scasol.charAt(k);
+			x = x + scasolPosition;
+		}
+		
+		//Changing character at the position of the string.
+		char changePosition = scasol.charAt(change);
+		if(changePosition == '0')
+		{
+			changePosition = '1';
+			x = x + changePosition;
+		}
+		else
+		{
+			changePosition = '0';
+			x = x + changePosition;
+		}
+		
+		//From changed position to the end of string.
+		for (int i = change + 1; i < n; i++)
+		{
+			char scasolPosition = scasol.charAt(i);
+			x = x + scasolPosition;
+		}
+		scasol = x;
+	}
+	public String GetSol()
+	{
+		return(scasol);
 	}
 
 }

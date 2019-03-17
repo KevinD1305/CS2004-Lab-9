@@ -31,7 +31,7 @@ public class Lab9
 		ScalesSolution mutatedsol = new ScalesSolution(weights.size());//Creates initial random solution //MODIFIED
 		if (weights.isEmpty()) 
 		{
-			return null;
+			return null;//Returning null if the array is empty
 		}
 		else 
 		{
